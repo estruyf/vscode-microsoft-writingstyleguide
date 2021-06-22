@@ -32,6 +32,6 @@ This extension is still a work in progress.
 
 <p align="center">
   <a href="#">
-      <img src="https://estruyf-github.azurewebsites.net/api/VisitorHit?user=estruyf&repo=vscode-microsoft-writingstyleguide&countColor=%23F4B955&labelColor=%23162034" />
+      <img src="https://estruyf-github.azurewebsites.net/api/VisitorHit?user=estruyf&repo=vscode-microsoft-writingstyleguide&countColor=%23D69B37&labelColor=%23162034" />
    </a>
 </p>
