@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=eliostruyf.vscode-microsoft-writingstyleguide">
-    <img alt="Doctor" src="./assets/vscode-microsoft-writingstyleguide.png" height="200">
+    <img alt="Writing Style Guide" src="./assets/writing-style-guide.png" height="200">
   </a>
 </p>
 
