@@ -6,7 +6,7 @@
 	"preview": true,
 	"publisher": "eliostruyf",
 	"galleryBanner": {
-		"color": "#011627",
+		"color": "#162034",
 		"theme": "dark"
 	},
 	"icon": "assets/writing-style-guide.png",
@@ -22,7 +22,7 @@
 		"url": "https://github.com/estruyf/vscode-microsoft-writingstyleguide"
 	},
 	"engines": {
-		"vscode": "^1.57.0"
+		"vscode": "^1.56.0"
 	},
 	"categories": [
 		"Other"
@@ -55,6 +55,7 @@
 		"gray-matter": "4.0.3",
 		"markdown-it": "12.0.6",
 		"mocha": "^8.4.0",
+		"striptags": "3.2.0",
 		"typescript": "^4.3.2",
 		"vscode-test": "^1.5.2"
 	},

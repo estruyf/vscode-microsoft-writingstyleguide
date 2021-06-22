@@ -5,6 +5,7 @@ const matter = require('gray-matter');
 const cheerio = require('cheerio');
 const { gzip } = require('node-gzip');
 const MarkdownIt = require('markdown-it');
+const striptags = require('striptags');
 const md = new MarkdownIt();
 
 const searchPath = `**/microsoft-style-guide/styleguide/a-z-word-list-term-collections/**/*.md`;
@@ -29,13 +30,27 @@ const searchPath = `**/microsoft-style-guide/styleguide/a-z-word-list-term-colle
 
       if (header.length > 0) {
         const words = header.first().text().split(',').map(w => w.toLowerCase().trim());
-        let content = $.text().replace(/\n/g, "\n\n").trim();
+
+        const htmlContent = $.html();
+        let content = htmlContent.trim();
+
+        const lt = new RegExp(`&lt;`, "g");
+        content = content.replace(lt, "<");
+
+        const gt = new RegExp(`&gt;`, "g");
+        content = content.replace(gt, ">");
+
+        const amp = new RegExp(`&amp;`, "g");
+        content = content.replace(amp, "&");
+
+        content = striptags(content);
+
+        content = content.replace(/\n/g, `\n\n`);
+        content = content.replace(/\n\n\n\n/g, `\n\n`);
 
         while (content.endsWith(`\n`)) {
           content = content.substring(0, content.length - 2);
         }
-
-        content.replace(/\n\n\n\n/g, `\n\n\n`);
 
         dictionary.push({
           words,
@@ -45,5 +60,5 @@ const searchPath = `**/microsoft-style-guide/styleguide/a-z-word-list-term-colle
     }
   }
 
-  fs.writeFileSync(path.join(__dirname, '../dictionary.json'), JSON.stringify(dictionary), { encoding: "utf-8" });
+  fs.writeFileSync(path.join(__dirname, '../dictionary.json'), JSON.stringify(dictionary, null, 2), { encoding: "utf-8" });
 })();
