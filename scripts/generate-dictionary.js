@@ -6,6 +6,7 @@ const cheerio = require('cheerio');
 const { gzip } = require('node-gzip');
 const MarkdownIt = require('markdown-it');
 const striptags = require('striptags');
+
 const md = new MarkdownIt();
 
 const searchPath = `**/microsoft-style-guide/styleguide/a-z-word-list-term-collections/**/*.md`;
@@ -60,5 +61,5 @@ const searchPath = `**/microsoft-style-guide/styleguide/a-z-word-list-term-colle
     }
   }
 
-  fs.writeFileSync(path.join(__dirname, '../dictionary.json'), JSON.stringify(dictionary, null, 2), { encoding: "utf-8" });
+  fs.writeFileSync(path.join(__dirname, '../dictionary.json'), JSON.stringify(dictionary), { encoding: "utf-8" });
 })();

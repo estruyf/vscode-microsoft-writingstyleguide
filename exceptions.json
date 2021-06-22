@@ -1,0 +1,8 @@
+[
+  {
+    "word": "am",
+    "exclude": {
+      "previous": "i"
+    }
+  }
+]

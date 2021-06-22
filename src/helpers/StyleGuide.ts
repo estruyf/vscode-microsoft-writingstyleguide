@@ -5,6 +5,7 @@ import { Diagnostic, DiagnosticCollection, DiagnosticSeverity, Range } from 'vsc
 
 export class StyleGuide {
   private static dictionary: { words: string[]; content: string }[];
+  private static exceptions: { word: string; exclude: { previous: string; next: string; } }[];
 
   public static verify(collection: DiagnosticCollection) {
     const editor = vscode.window.activeTextEditor;
@@ -14,13 +15,11 @@ export class StyleGuide {
     }
 
     if (!this.dictionary) {
-      const fullPath = path.join(__dirname, `../../dictionary.json`);
-      if (fs.existsSync(fullPath)) { 
-        const file = fs.readFileSync(fullPath);
-        if (file) {
-          this.dictionary = JSON.parse(file.toString());
-        }
-      }
+      this.dictionary = this.getFile(`../../dictionary.json`);
+    }
+
+    if (!this.exceptions) {
+      this.exceptions = this.getFile(`../../exceptions.json`);
     }
 
     const textDocument = editor.document;
@@ -40,7 +39,20 @@ export class StyleGuide {
               const match = m[0];
               const hint = this.dictionary.find(d => d.words.includes(match.toLowerCase()));
 
-              if (hint) {
+              // Check if the word can be excluded
+              const toExclude = this.exceptions.find(e => e.word === word.toLowerCase());
+              let exclude = false;
+
+              if (toExclude) {
+                const prevWordIdx = text.substring(0, m.index).trim().replace(/\n/g, " ").lastIndexOf(" ");
+                const lastWord = text.substring(prevWordIdx, m.index).trim();
+
+                if (lastWord && toExclude?.exclude?.previous?.toLowerCase() && lastWord.toLowerCase() === toExclude.exclude.previous.toLowerCase()) {
+                  exclude = true;
+                }
+              }
+
+              if (hint && !exclude) {
                 hints++;
               
                 const diagnostic: Diagnostic = {
@@ -61,5 +73,20 @@ export class StyleGuide {
     }
 
     collection.set(editor.document.uri, [...diagnostics]);
+  }
+
+  /**
+   * Retrieve the file from the path
+   * @param filePath 
+   * @returns 
+   */
+  private static getFile(filePath: string) {
+    const dicPath = path.join(__dirname, filePath);
+    if (fs.existsSync(dicPath)) { 
+      const file = fs.readFileSync(dicPath);
+      return JSON.parse(file.toString());
+    }
+
+    return null;
   }
 }
