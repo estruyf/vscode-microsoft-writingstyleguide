@@ -9,6 +9,7 @@
 		"color": "#011627",
 		"theme": "dark"
 	},
+	"icon": "assets/writing-style-guide.png",
 	"badges": [
 		{
 			"description": "version",
