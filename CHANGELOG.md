@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.5]
+
+- Integrating hover provider to make it possible to render markdown contents for the guides
+
 ## [0.0.4]
 
 - [#1](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/1): Created an exceptions list to exclude word combinations

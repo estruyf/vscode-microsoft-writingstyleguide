@@ -32,30 +32,30 @@ const searchPath = `**/microsoft-style-guide/styleguide/a-z-word-list-term-colle
       if (header.length > 0) {
         const words = header.first().text().split(',').map(w => w.toLowerCase().trim());
 
-        const htmlContent = $.html();
-        let content = htmlContent.trim();
+        // const htmlContent = $.html();
+        // let content = htmlContent.trim();
 
-        const lt = new RegExp(`&lt;`, "g");
-        content = content.replace(lt, "<");
+        // const lt = new RegExp(`&lt;`, "g");
+        // content = content.replace(lt, "<");
 
-        const gt = new RegExp(`&gt;`, "g");
-        content = content.replace(gt, ">");
+        // const gt = new RegExp(`&gt;`, "g");
+        // content = content.replace(gt, ">");
 
-        const amp = new RegExp(`&amp;`, "g");
-        content = content.replace(amp, "&");
+        // const amp = new RegExp(`&amp;`, "g");
+        // content = content.replace(amp, "&");
 
-        content = striptags(content);
+        // content = striptags(content);
 
-        content = content.replace(/\n/g, `\n\n`);
-        content = content.replace(/\n\n\n\n/g, `\n\n`);
+        // content = content.replace(/\n/g, `\n\n`);
+        // content = content.replace(/\n\n\n\n/g, `\n\n`);
 
-        while (content.endsWith(`\n`)) {
-          content = content.substring(0, content.length - 2);
-        }
+        // while (content.endsWith(`\n`)) {
+        //   content = content.substring(0, content.length - 2);
+        // }
 
         dictionary.push({
           words,
-          content
+          content: data.content
         });
       }
     }

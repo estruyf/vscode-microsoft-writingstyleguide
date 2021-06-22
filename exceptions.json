@@ -2,7 +2,8 @@
   {
     "word": "am",
     "exclude": {
-      "previous": "i"
+      "before": ["i"],
+      "after": []
     }
   }
 ]
