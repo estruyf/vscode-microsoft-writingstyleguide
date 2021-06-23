@@ -2,7 +2,7 @@
 	"name": "vscode-microsoft-writingstyleguide",
 	"displayName": "Writing Style Guide",
 	"description": "Extension that makes your writing better by taking the recommendations from the Microsoft Writing Style Guide into account.",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"preview": true,
 	"publisher": "eliostruyf",
 	"galleryBanner": {
@@ -36,17 +36,17 @@
 	"contributes": {
 		"commands": [
 			{
-        "command": "eliostruyf.writingstyleguide.website",
-        "title": "Writing: Open the Microsoft Writing Style Guide website"
-      },
+				"command": "eliostruyf.writingstyleguide.website",
+				"title": "Writing: Open the Microsoft Writing Style Guide website"
+			},
 			{
-        "command": "eliostruyf.writingstyleguide.enable",
-        "title": "Writing: Enable the Microsoft Writing Style Guide"
-      },
+				"command": "eliostruyf.writingstyleguide.enable",
+				"title": "Writing: Enable the Microsoft Writing Style Guide"
+			},
 			{
-        "command": "eliostruyf.writingstyleguide.disable",
-        "title": "Writing: Disable the Microsoft Writing Style Guide"
-      }
+				"command": "eliostruyf.writingstyleguide.disable",
+				"title": "Writing: Disable the Microsoft Writing Style Guide"
+			}
 		],
 		"configuration": {
 			"title": "Writing Style Guide",
