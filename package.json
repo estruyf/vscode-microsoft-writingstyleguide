@@ -28,10 +28,37 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onLanguage:markdown"
+		"onLanguage:markdown",
+		"onCommand:eliostruyf.writingstyleguide.enable",
+		"onCommand:eliostruyf.writingstyleguide.disable"
 	],
 	"main": "./out/extension.js",
-	"contributes": {},
+	"contributes": {
+		"commands": [
+			{
+        "command": "eliostruyf.writingstyleguide.website",
+        "title": "Writing: Open the Microsoft Writing Style Guide website"
+      },
+			{
+        "command": "eliostruyf.writingstyleguide.enable",
+        "title": "Writing: Enable the Microsoft Writing Style Guide"
+      },
+			{
+        "command": "eliostruyf.writingstyleguide.disable",
+        "title": "Writing: Disable the Microsoft Writing Style Guide"
+      }
+		],
+		"configuration": {
+			"title": "Writing Style Guide",
+			"properties": {
+				"eliostruyf.writingstyleguide.isDisabled": {
+					"type": "boolean",
+					"default": false,
+					"description": "Specify if you want to disable the Writing Style Guide recommendations on the current project."
+				}
+			}
+		}
+	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",

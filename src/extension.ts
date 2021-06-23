@@ -1,8 +1,11 @@
+import { verify } from 'crypto';
 import * as vscode from 'vscode';
 import { CancellationToken, Position, TextDocument } from 'vscode';
 import { StyleGuide } from './helpers/StyleGuide';
 
 export const EXTENSION_NAME = 'Writing Style Guide';
+export const CONFIG_KEY = "eliostruyf";
+export const CONFIG_DISABLED = "writingstyleguide.isDisabled";
 
 let debouncer: { (fnc: any, time: number): void; };
 let collection: vscode.DiagnosticCollection;
@@ -29,6 +32,28 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
 	if (vscode.window.activeTextEditor) {
 		verifyText();
 	}
+
+	subscriptions.push(
+		vscode.commands.registerCommand('eliostruyf.writingstyleguide.website', async () => {
+			vscode.commands.executeCommand('vscode.open', vscode.Uri.parse('https://docs.microsoft.com/en-us/style-guide/welcome/'));
+		})
+	);
+
+	subscriptions.push(
+		vscode.commands.registerCommand('eliostruyf.writingstyleguide.enable', async () => {
+			const config = vscode.workspace.getConfiguration(CONFIG_KEY);
+    	await config.update(CONFIG_DISABLED, false, vscode.ConfigurationTarget.Workspace);
+			verifyText();
+		})
+	);
+
+	subscriptions.push(
+		vscode.commands.registerCommand('eliostruyf.writingstyleguide.disable', async () => {
+			const config = vscode.workspace.getConfiguration(CONFIG_KEY);
+    	await config.update(CONFIG_DISABLED, true, vscode.ConfigurationTarget.Workspace);
+			verifyText();
+		})
+	);
 
 	console.log(`${EXTENSION_NAME} extension enabled`);
 }

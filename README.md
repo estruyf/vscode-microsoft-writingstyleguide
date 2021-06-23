@@ -28,6 +28,18 @@ If the extension detects a word listed in the **A-Z word list and term collectio
 
 In the current version, the extension supports highlighting the A-Z words which you can find in the `A-Z word list and term collections`.
 
+## Commands
+
+Currently the extension supports the following commands in VSCode:
+
+![](./assets/commands.png)
+
+- `Writing: Open the Microsoft Writing Style Guide website`
+- `Writing: Enable the Microsoft Writing Style Guide` 
+  - Extension is enabled by default. If you want to disable it for a project, you can run the disable command.
+- `Writing: Disable the Microsoft Writing Style Guide`
+  - Allows you to disable the extension for the current project. 
+
 ## Work in progress
 
 This extension is still a work in progress.

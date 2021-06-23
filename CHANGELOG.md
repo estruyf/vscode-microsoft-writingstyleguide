@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.0.8]
+
+- [#10](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/10): Exclude `http`, `https`, and `www` when used in a link
+- Added MIT license
+- Added commands to `enable` or `disable` the extension
+- Added command to open the Microsoft Writing Style Guide website
+
 ## [0.0.7]
 
 - [#6](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/6): Do not run the extension for codeblocks in the markdown content
