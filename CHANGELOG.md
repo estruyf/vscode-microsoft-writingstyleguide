@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.6]
+
+- [#2](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/2): Update the page references to links to the official Microsoft Writing Style Guide website
+
 ## [0.0.5]
 
 - Integrating hover provider to make it possible to render markdown contents for the guides
