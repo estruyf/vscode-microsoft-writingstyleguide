@@ -16,7 +16,7 @@
   <img src="https://vsmarketplacebadge.apphb.com/rating/eliostruyf.vscode-microsoft-writingstyleguide.svg" alt="Ratings" style="display: inline-block;margin-left:10px" />
 </p>
 
-This is an VSCode extension based on the [writing style guide from Microsoft](https://docs.microsoft.com/en-us/style-guide/welcome/). The Microsoft Writing Style Guide guides you with your writing style and the terminology for your communication.
+This is a VSCode extension based on the [writing style guide from Microsoft](https://docs.microsoft.com/en-us/style-guide/welcome/). The Microsoft Writing Style Guide guides you with your writing style and the terminology for your communication.
 
 By using the extension, you will not have to keep the writing style guide website open. The extension will hint you which writing or terminology can be improved.
 
