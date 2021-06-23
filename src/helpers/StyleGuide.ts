@@ -34,6 +34,25 @@ export class StyleGuide {
     const diagnostics: Diagnostic[] = [];
     let hints = 0;
 
+    // Check if there is front matter in the file
+    let startContentIdx = 0;
+    const frontMatter = /---([^`]*)---/;
+    const fmMatch = text.match(frontMatter);
+    if (fmMatch) {
+      startContentIdx = (fmMatch?.index || 0) + fmMatch[0].length;
+    }
+
+    // Get all code blocks
+    const codeBlock = /```([^`]*)```/g;
+    let codeMatch: RegExpExecArray | null;
+    let codeIndexes = [];
+    while ((codeMatch = codeBlock.exec(text)) !== null) {
+      codeIndexes.push({
+        startIdx: codeMatch.index,
+        endIdx: codeMatch.index + codeMatch[0].length
+      });
+    }
+
     for (const entry of this.dictionary) {
       for (const word of entry.words) {
         try {
@@ -72,7 +91,18 @@ export class StyleGuide {
                 }
               }
 
-              if (hint && !exclude) {
+              // Validate if word is not used in a codeblock
+              let isInCodeBlock = false;
+              for (const codeIdx of codeIndexes) {
+                if (!isInCodeBlock && codeIdx.startIdx < m.index && codeIdx.endIdx > m.index) {
+                  isInCodeBlock = true;
+                }
+              }
+
+              // Check if the word exists in the front matter
+              const beforeContentStart = startContentIdx > m.index;
+
+              if (hint && !exclude && !isInCodeBlock && !beforeContentStart) {
                 hints++;
               
                 const diagnostic: Diagnostic = {

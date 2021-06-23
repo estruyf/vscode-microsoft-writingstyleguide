@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.0.7]
+
+- [#6](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/6): Do not run the extension for codeblocks in the markdown content
+- [#7](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/7): Do not run the extension on the front matter of the in the markdown file
+
 ## [0.0.6]
 
 - [#2](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/2): Update the page references to links to the official Microsoft Writing Style Guide website
