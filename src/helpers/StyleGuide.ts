@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CancellationToken, Diagnostic, DiagnosticCollection, DiagnosticSeverity, Hover, Position, ProviderResult, Range, TextDocument } from 'vscode';
-import { EXTENSION_NAME } from '../extension';
+import { CONFIG_DISABLED, CONFIG_KEY, EXTENSION_NAME } from '../extension';
 
 export class StyleGuide {
   private static dictionary: { words: string[]; content: string }[];
@@ -14,9 +14,15 @@ export class StyleGuide {
    * @returns 
    */
   public static verify(collection: DiagnosticCollection) {
+    const config = vscode.workspace.getConfiguration(CONFIG_KEY);
+    const isDisabled = config.get(CONFIG_DISABLED) as boolean;
+
     const editor = vscode.window.activeTextEditor;
 
-    if (!editor) {
+    if (!editor || isDisabled) {
+      if (collection) {
+        collection.clear();
+      }
       return;
     }
 
@@ -79,15 +85,27 @@ export class StyleGuide {
                   }
                 }
 
-                // Checks the word(s) after the current one  
-                const wordIdx = (m.index + word.length + 1);
-                const nextWordIdx = text.substring(wordIdx).trim().replace(/\n/g, " ").indexOf(" ");
-                const nextWord = text.substring(wordIdx, (wordIdx + nextWordIdx)).trim();
+                // Checks the word(s) after the current one
+                if (!exclude) {
+                  const wordIdx = (m.index + word.length);
+                  const nextWordIdx = text.substring(wordIdx).trim().replace(/\n/g, " ").indexOf(" ");
 
-                if (nextWord && toExclude?.exclude?.after) {
-                  if (toExclude.exclude.after.map(w => w.toLowerCase()).includes(nextWord.toLowerCase())) {
-                    exclude = true;
+                  let nextWord = text.substring(wordIdx).trim();
+                  if (nextWordIdx !== -1) {
+                    nextWord = text.substring(wordIdx, (wordIdx + nextWordIdx)).trim();
                   }
+  
+                  if (nextWord && toExclude?.exclude?.after) {
+                    const allExceptions = toExclude.exclude.after.map(w => w.toLowerCase());
+  
+                    const exists = allExceptions.filter(w => nextWord.startsWith(w));
+  
+                    if (exists && exists.length > 0) {
+                      exclude = true;
+                    }
+                  }
+
+                  console.log(nextWord, exclude)
                 }
               }
 

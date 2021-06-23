@@ -5,5 +5,26 @@
       "before": ["i"],
       "after": []
     }
+  },
+  {
+    "word": "http",
+    "exclude": {
+      "before": [],
+      "after": ["://"]
+    }
+  },
+  {
+    "word": "https",
+    "exclude": {
+      "before": [],
+      "after": ["://"]
+    }
+  },
+  {
+    "word": "www",
+    "exclude": {
+      "before": [],
+      "after": ["."]
+    }
   }
 ]
