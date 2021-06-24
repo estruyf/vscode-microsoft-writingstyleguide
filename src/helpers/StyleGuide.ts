@@ -49,7 +49,7 @@ export class StyleGuide {
     }
 
     // Get all code blocks
-    const codeBlock = /```([^`]*)```/g;
+    const codeBlock = /`([^`]*)`/g;
     let codeMatch: RegExpExecArray | null;
     let codeIndexes = [];
     while ((codeMatch = codeBlock.exec(text)) !== null) {
@@ -104,8 +104,6 @@ export class StyleGuide {
                       exclude = true;
                     }
                   }
-
-                  console.log(nextWord, exclude)
                 }
               }
 

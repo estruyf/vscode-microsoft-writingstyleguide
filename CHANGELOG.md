@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.9]
+
+-[#12](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/12): Ignore inline code blocks.
+
 ## [0.0.8]
 
 - [#10](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/10): Exclude `http`, `https`, and `www` when used in a link
