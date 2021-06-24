@@ -28,6 +28,13 @@ If the extension detects a word listed in the **A-Z word list and term collectio
 
 In the current version, the extension supports highlighting the A-Z words which you can find in the `A-Z word list and term collections`.
 
+## Smart Features
+
+The extension will 
+
+* ignore the front matters of an `.md` file
+* ignore text in code blocks
+
 ## Commands
 
 Currently the extension supports the following commands in VSCode:
