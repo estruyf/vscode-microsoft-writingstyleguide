@@ -26,7 +26,10 @@ If the extension detects a word listed in the **A-Z word list and term collectio
 
 ## What is supported
 
-In the current version, the extension supports highlighting the A-Z words which you can find in the `A-Z word list and term collections`.
+In the current version, the extension supports highlighting the words which you can find 
+
+* in the **A-Z word list and term collections**
+* in [Bias-free communication](https://docs.microsoft.com/en-us/style-guide/bias-free-communication)
 
 ## Smart Features
 
@@ -34,6 +37,7 @@ The extension will
 
 * ignore the front matters of an `.md` file
 * ignore text in code blocks
+* ignore text in inline code blocks
 
 ## Commands
 
