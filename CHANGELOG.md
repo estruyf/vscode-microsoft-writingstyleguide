@@ -2,6 +2,7 @@
 
 ## [0.0.9]
 
+-[#8](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/8): Bias-free recommendations added.
 -[#12](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/12): Ignore inline code blocks.
 
 ## [0.0.8]

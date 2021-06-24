@@ -1,0 +1,52 @@
+[
+  {
+    "words": ["chairman"],
+    "alternatives": ["chair", "moderator"]
+  },
+  {
+    "words": ["man", "mankind"],
+    "alternatives": ["humanity", "people", "humankind"]
+  },
+  {
+    "words": ["mans"],
+    "alternatives": ["staffs", "operates"]
+  },
+  {
+    "words": ["salesman"],
+    "alternatives": ["sales representative"]
+  },
+  {
+    "words": ["manmade"],
+    "alternatives": ["synthetic", "manufactured"]
+  },
+  {
+    "words": ["manpower"],
+    "alternatives": ["workforce", "staff", "personnel"]
+  },
+  {
+    "words": ["he", "him", "his", "she", "her", "hers"],
+    "alternatives": [
+      "Rewrite to use the second person (you).",
+      "Rewrite the sentence to have a plural noun and pronoun.",
+      "Use *the* or *a* instead of a pronoun (for example, \"the document\").",
+      "Refer to a person's role (reader, employee, customer, or client, for example).",
+      "User *person* or *individual*."
+    ]
+  },
+  {
+    "words": ["master"],
+    "alternatives": ["primary", "main"]
+  },
+  {
+    "words": ["slave"],
+    "alternatives": ["subordinate"]
+  },
+  {
+    "words": ["demilitarized zone", "dmz"],
+    "alternatives": ["perimeter network"]
+  },
+  {
+    "words": ["hang"],
+    "alternatives": ["stop responding"]
+  }
+]
