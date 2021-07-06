@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CancellationToken, Diagnostic, DiagnosticCollection, DiagnosticSeverity, Hover, Position, ProviderResult, Range, TextDocument } from 'vscode';
-import { CONFIG_DISABLED, CONFIG_KEY, EXTENSION_NAME } from '../extension';
+import { CONFIG_TERMS_DISABLED, CONFIG_BIASFREE_DISABLED, CONFIG_KEY, EXTENSION_NAME } from '../extension';
 
 export class StyleGuide {
   private static hints: number = 0;
@@ -17,11 +17,12 @@ export class StyleGuide {
    */
   public static verify(collection: DiagnosticCollection) {
     const config = vscode.workspace.getConfiguration(CONFIG_KEY);
-    const isDisabled = config.get(CONFIG_DISABLED) as boolean;
+    const isTermsDisabled = config.get(CONFIG_TERMS_DISABLED) as boolean;
+    const isBiasFreeDisabled = config.get(CONFIG_BIASFREE_DISABLED) as boolean;
 
     const editor = vscode.window.activeTextEditor;
 
-    if (!editor || isDisabled) {
+    if (!editor || (isTermsDisabled && isBiasFreeDisabled)) {
       if (collection) {
         collection.clear();
       }
@@ -62,15 +63,19 @@ export class StyleGuide {
       });
     }
 
-    for (const entry of this.dictionary) {
-      for (const word of entry.words) {
-        this.processWord(word, text, diagnostics, codeIndexes, startContentIdx, textDocument, "recommendation");
+    if (!isTermsDisabled) {
+      for (const entry of this.dictionary) {
+        for (const word of entry.words) {
+          this.processWord(word, text, diagnostics, codeIndexes, startContentIdx, textDocument, "recommendation");
+        }
       }
     }
 
-    for (const entry of this.biasFree) {
-      for (const word of entry.words) {
-        this.processWord(word, text, diagnostics, codeIndexes, startContentIdx, textDocument, "bias-free communication");
+    if (!isBiasFreeDisabled) {
+      for (const entry of this.biasFree) {
+        for (const word of entry.words) {
+          this.processWord(word, text, diagnostics, codeIndexes, startContentIdx, textDocument, "bias-free communication");
+        }
       }
     }
 

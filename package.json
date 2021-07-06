@@ -29,36 +29,45 @@
 	],
 	"activationEvents": [
 		"onLanguage:markdown",
-		"onCommand:eliostruyf.writingstyleguide.enable",
-		"onCommand:eliostruyf.writingstyleguide.disable"
+		"onCommand:writingstyleguide.enable",
+		"onCommand:writingstyleguide.disable",
+		"onCommand:writingstyleguide.website"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "eliostruyf.writingstyleguide.website",
+				"command": "writingstyleguide.website",
 				"title": "Writing: Open the Microsoft Writing Style Guide website"
 			},
 			{
-				"command": "eliostruyf.writingstyleguide.enable",
+				"command": "writingstyleguide.enable",
 				"title": "Writing: Enable the Microsoft Writing Style Guide"
 			},
 			{
-				"command": "eliostruyf.writingstyleguide.disable",
+				"command": "writingstyleguide.disable",
 				"title": "Writing: Disable the Microsoft Writing Style Guide"
 			}
 		],
 		"configuration": {
 			"title": "Writing Style Guide",
 			"properties": {
-				"eliostruyf.writingstyleguide.isDisabled": {
+				"eliostruyf.writingstyleguide.terms.isDisabled": {
 					"type": "boolean",
 					"default": false,
-					"description": "Specify if you want to disable the Writing Style Guide recommendations on the current project."
+					"description": "Specify if you want to disable the terms guidance from Writing Style Guide on the current project."
+				},
+				"eliostruyf.writingstyleguide.biasFree.isDisabled": {
+					"type": "boolean",
+					"default": false,
+					"description": "Specify if you want to disable the bias free communication guidance from Writing Style Guide on the current project."
 				}
 			}
 		}
 	},
+	"extensionDependencies": [
+    "eliostruyf.vscode-extension-panel"
+  ],
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
