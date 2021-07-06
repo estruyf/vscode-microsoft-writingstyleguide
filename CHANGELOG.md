@@ -2,7 +2,7 @@
 
 ## [0.0.10]
 
-- [#25](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/15): Added site panel actions for easier enabling/disabling functionality
+- [#15](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/15): Added site panel actions for easier enabling/disabling functionality
 
 ## [0.0.9]
 
