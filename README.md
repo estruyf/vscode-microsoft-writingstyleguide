@@ -22,7 +22,7 @@ When authoring a document in Visual Studio Code, you can now use this extension,
 
 If the extension detects a word listed in the **A-Z word list and term collections**, it shows blue squiggly underlines for the respecting word and displays a contextual popup, which explains the issue. It also links to respecting recommendation in the Writing Style Guide. 
 
-<img width="535" alt="WSG-context-popup" src="https://user-images.githubusercontent.com/49960482/123083942-e458d100-d420-11eb-8401-f9e281a5d356.png">
+![](./assets/guidance-tooltips.png)
 
 ## What is supported
 
@@ -41,7 +41,7 @@ The extension will
 
 In the sidepanel, you can enable which checks you like to apply: 
 
-<img width="535" alt="WSG-sidepanel" src="https://user-images.githubusercontent.com/49960482/124723156-08311200-df0b-11eb-9de9-04032684b740.png">
+![](./assets/sidepanel-actions.png)
 
 
 ## Commands

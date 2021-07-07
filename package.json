@@ -66,8 +66,8 @@
 		}
 	},
 	"extensionDependencies": [
-    "eliostruyf.vscode-extension-panel"
-  ],
+		"eliostruyf.vscode-extension-panel"
+	],
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
