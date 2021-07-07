@@ -39,6 +39,11 @@ The extension will
 * ignore text in code blocks
 * ignore text in inline code blocks
 
+In the sidepanel, you can enable which checks you like to apply: 
+
+<img width="535" alt="WSG-sidepanel" src="https://user-images.githubusercontent.com/49960482/124723156-08311200-df0b-11eb-9de9-04032684b740.png">
+
+
 ## Commands
 
 Currently the extension supports the following commands in VSCode:
