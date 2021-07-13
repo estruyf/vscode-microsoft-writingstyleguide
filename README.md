@@ -14,6 +14,10 @@
   <img src="https://vsmarketplacebadge.apphb.com/installs/eliostruyf.vscode-microsoft-writingstyleguide.svg" alt="Number of installs"  style="display: inline-block;margin-left:10px" />
   
   <img src="https://vsmarketplacebadge.apphb.com/rating/eliostruyf.vscode-microsoft-writingstyleguide.svg" alt="Ratings" style="display: inline-block;margin-left:10px" />
+
+  <a href="https://www.buymeacoffee.com/zMeFRy9" title="Buy me a coffee" style="margin-left:10px">
+    <img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-€%203-blue?logo=buy-me-a-coffee&style=flat" alt="Buy me a coffee" style="display: inline-block" />
+  </a>
 </p>
 
 This is a VSCode extension based on the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/), which helps you to get Microsoft's voice and style when you write about tech. Among other considerations about accessibility guidelines, bias-free communication and in-detail information on grammar, text formatting and capitalization, the guide points out an A-Z word list and term collection, which works as a refernce that can be looked up, when in doubt. 
