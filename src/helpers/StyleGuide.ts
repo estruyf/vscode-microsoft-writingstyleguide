@@ -16,11 +16,15 @@ export class StyleGuide {
    * @returns 
    */
   public static verify(collection: DiagnosticCollection) {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor || !editor.document || editor.document.languageId !== "markdown") {
+      return;
+    }
+
     const config = vscode.workspace.getConfiguration(CONFIG_KEY);
     const isTermsDisabled = config.get(CONFIG_TERMS_DISABLED) as boolean;
     const isBiasFreeDisabled = config.get(CONFIG_BIASFREE_DISABLED) as boolean;
 
-    const editor = vscode.window.activeTextEditor;
 
     if (!editor || (isTermsDisabled && isBiasFreeDisabled)) {
       if (collection) {

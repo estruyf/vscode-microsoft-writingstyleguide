@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.11]
+
+- [#17](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/17): Only show recommendations for markdown files
+
 ## [0.0.10]
 
 - [#15](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/15): Added site panel actions for easier enabling/disabling functionality

@@ -40,6 +40,9 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
 		})
 	);
 
+	/**
+	 * Register all the commands to toggle the extension functionality
+	 */
 	subscriptions.push(
 		vscode.commands.registerCommand('writingstyleguide.enable', async () => {
 			const config = vscode.workspace.getConfiguration(CONFIG_KEY);
@@ -77,6 +80,9 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
 		})
 	);
 
+	/**
+	 * Register the extension panel actions
+	 */
 	subscriptions.push(vscode.commands.registerCommand('eliostruyf.vscode-microsoft-writingstyleguide.panel.registration', () => {
 		const config = vscode.workspace.getConfiguration(CONFIG_KEY);
 
