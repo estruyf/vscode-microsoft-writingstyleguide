@@ -15,7 +15,7 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
 	collection = vscode.languages.createDiagnosticCollection('Microsoft Style Guide');
 
 	vscode.languages.registerHoverProvider("markdown", {
-		provideHover: (document: TextDocument, position: Position, token: CancellationToken) => StyleGuide.hoverProvider(document, position, token, collection)
+		provideHover: async (document: TextDocument, position: Position, token: CancellationToken) => StyleGuide.hoverProvider(document, position, token, collection)
 	});
 	
 	debouncer = debounceVerifyText();

@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as fs from 'fs';
 import * as path from 'path';
 import { CancellationToken, Diagnostic, DiagnosticCollection, DiagnosticSeverity, Hover, Position, ProviderResult, Range, TextDocument } from 'vscode';
 import { CONFIG_TERMS_DISABLED, CONFIG_BIASFREE_DISABLED, CONFIG_KEY, EXTENSION_NAME } from '../extension';
@@ -15,7 +14,7 @@ export class StyleGuide {
    * @param collection 
    * @returns 
    */
-  public static verify(collection: DiagnosticCollection) {
+  public static async verify(collection: DiagnosticCollection) {
     const editor = vscode.window.activeTextEditor;
     if (!editor || !editor.document || editor.document.languageId !== "markdown") {
       return;
@@ -35,11 +34,11 @@ export class StyleGuide {
 
     this.hints = 0;
 
-    this.dictionary = this.getDictionary();
-    this.biasFree = this.getBiasFree();
+    this.dictionary = await this.getDictionary();
+    this.biasFree = await this.getBiasFree();
 
     if (!this.exceptions) {
-      this.exceptions = this.getFile(`../../exceptions.json`);
+      this.exceptions = await this.getFile(`../../exceptions.json`);
     }
 
     const textDocument = editor.document;
@@ -94,7 +93,7 @@ export class StyleGuide {
    * @param collection 
    * @returns 
    */
-  public static hoverProvider(document: TextDocument, position: Position, token: CancellationToken, collection: vscode.DiagnosticCollection): ProviderResult<Hover> {
+  public static async hoverProvider(document: TextDocument, position: Position, token: CancellationToken, collection: vscode.DiagnosticCollection): Promise<ProviderResult<Hover>> {
     const range = document.getWordRangeAtPosition(position);
 
     if (range && collection) {
@@ -111,8 +110,8 @@ export class StyleGuide {
       if (diagnostic && diagnostic.code) {
         const word = diagnostic.code as string;
         
-        this.dictionary = this.getDictionary();
-        this.biasFree = this.getBiasFree();
+        this.dictionary = await this.getDictionary();
+        this.biasFree = await this.getBiasFree();
 
         const record = this.dictionary.find(entry => entry.words.includes(word.toLowerCase().trim()));
         if (record) {
@@ -136,9 +135,9 @@ ${bias.alternatives.map(a => `
    * Retrieve the dictionary recommendations
    * @returns 
    */
-  private static getDictionary() {
+  private static async getDictionary() {
     if (!this.dictionary) {
-      this.dictionary = this.getFile(`../../dictionary.json`);
+      this.dictionary = await this.getFile(`../../dictionary.json`);
     }
     return this.dictionary;
   }
@@ -147,9 +146,9 @@ ${bias.alternatives.map(a => `
    * Get the bias free recommendations
    * @returns 
    */
-  private static getBiasFree() {
+  private static async getBiasFree() {
     if (!this.biasFree) {
-      this.biasFree = this.getFile(`../../bias-free.json`);
+      this.biasFree = await this.getFile(`../../bias-free.json`);
     }
     return this.biasFree;
   }
@@ -160,11 +159,13 @@ ${bias.alternatives.map(a => `
    * @param filePath 
    * @returns 
    */
-  private static getFile(filePath: string) {
-    const dicPath = path.join(__dirname, filePath);
-    if (fs.existsSync(dicPath)) { 
-      const file = fs.readFileSync(dicPath);
+  private static async getFile(filePath: string) {
+    try {
+      const dicPath = path.join(__dirname, filePath);
+      const file = await vscode.workspace.fs.readFile(vscode.Uri.file(dicPath));
       return JSON.parse(file.toString());
+    } catch (error) {
+      console.error((error as Error).message);
     }
 
     return null;
@@ -257,7 +258,7 @@ ${bias.alternatives.map(a => `
         }
       }
     } catch (e) {
-      console.error(e?.message || e);
+      console.error((e as Error)?.message || e);
     }
   }
 }
