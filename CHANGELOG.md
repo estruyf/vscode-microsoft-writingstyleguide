@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.0]
+
+- Internal extension updates to support web. This means the extension can be used on `vscode.dev` and `github.dev`.
+
 ## [0.0.11]
 
 - [#17](https://github.com/estruyf/vscode-microsoft-writingstyleguide/issues/17): Only show recommendations for markdown files
