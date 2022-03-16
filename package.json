@@ -2,7 +2,7 @@
 	"name": "vscode-microsoft-writingstyleguide",
 	"displayName": "Writing Style Guide",
 	"description": "Extension that makes your writing better by taking the recommendations from the Microsoft Writing Style Guide into account.",
-	"version": "0.0.11",
+	"version": "0.1.0",
 	"preview": true,
 	"publisher": "eliostruyf",
 	"galleryBanner": {
